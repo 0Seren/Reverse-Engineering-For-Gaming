@@ -10,3 +10,22 @@ table {
   background-color: #e0e0eb;
   padding: 0px;
 }
+
+hex {
+  font-family: monospace;
+  color: #229954;
+}
+
+hex::before {
+  content: "0x";
+}
+
+code2 {
+  color: #E74C3C;
+  font-family: monospace;
+}
+
+value {
+  color: #f5871f;
+  font-family: monospace;
+}
