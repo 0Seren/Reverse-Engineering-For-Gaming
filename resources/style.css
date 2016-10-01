@@ -1,0 +1,12 @@
+table, th, td {
+    border: 1px solid black;
+    text-align: center;
+    vertical-align: middle;
+    padding: 3px;
+    background-color: white;
+}
+
+table {
+  background-color: #e0e0eb;
+  padding: 0px;
+}

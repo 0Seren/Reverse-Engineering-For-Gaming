@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="resources/code highlight/styles/tomorrow.css">
+    <link rel="stylesheet" type="text/css" href="resources/style.css">
+    <script src="resources/code highlight/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+  </head>
+  <body>
+    <h1>Part 1: Introduction to Memory</h1>
+
+
+    <h3>What is memory?</h3>
+
+    <p>For our purposes we will mainly think of memory as being split into two different types: Non-Volitle Memory (<a href="https://en.wikipedia.org/wiki/Non-volatile_memory">NVM</a>) and Random Access Memory (<a href="https://en.wikipedia.org/wiki/Random-access_memory">RAM</a>).</p>
+
+    <p>NVM is what we'll think of as any data that is stored on the hard drive of a computer or on a game disc. This data all makes use of the persistant storage of NVM and includes things such as the program's source code, save files, and character models/textures. Typically much of what is stored in NVM is eventually loaded into RAM to be used and manipulated as needed.</p>
+
+    <p>RAM is where a computer stores all data about a program that is currently running. This includes all traditional data, such as a player's location and health value, as well as "non-tradtional" data, which is typically the application's code/instruction set. For now we will be focusing mainly on traditional data in RAM.</p>
+
+
+    <h3>Ones and Zeros</h3>
+
+    <p>All data in a computer is stored with 0's and 1's combined in different ways. We call these 0's and 1's <a href="https://en.wikipedia.org/wiki/Bit">bits</a>. And we call a collection of 8 bits a <a href="https://en.wikipedia.org/wiki/Byte">byte</a>. Even though there are some data types that could, theoretically, be stored as a single bit, the smallest unit that is typically used to store a peice of data is a byte, so this is what we'll be focusing on. Another common piece of terminology is the <a href="https://en.wikipedia.org/wiki/Word_(computer_architecture)">word</a>. For our purposes, we'll define a word as 32 bits or, more commonly, 4 bytes.</p>
+
+    <table>
+      <tr><th>Name</th> <th>Size (Bits)</th> <th>Example(s)</th></tr>
+      <tr>
+        <td><a href="https://en.wikipedia.org/wiki/Bit">Bit</a></td>
+        <td>1</td>
+        <td>0<br/>1</td>
+      </tr>
+      <tr>
+        <td><a href="https://en.wikipedia.org/wiki/Byte">Byte</a></td>
+        <td>8</td>
+        <td>00000000<br/>00000001<br/>...<br/>11111111</td>
+      </tr>
+      <tr>
+        <td><a href="https://en.wikipedia.org/wiki/Word_(computer_architecture)">Word</a></td>
+        <td>32</td>
+        <td>10010010<br/>00100100<br/>01101110<br/>11001110</td>
+    </table>
+
+
+    <h3>Primitive Data Types</h3>
+
+    <p>Shown below is a table containing some <a href="https://www.tutorialspoint.com/cplusplus/cpp_data_types.htm">Primitive Data Types</a>. They are called primitive because they are the lowest form of data and every non-primitive data type is just a combination of one or more of these primitive types.</p>
+
+    <table>
+      <tr><th>Name</th><th>Description</th><th>Size (Bytes ::: Bits)</th><th>Values</th><th>C++</th></tr>
+      <tr>
+        <td><a href="https://en.wikipedia.org/wiki/Integer_(computer_science)">Integer</a></td>
+        <td>Whole Numbers:<br/><a href="https://en.wikipedia.org/wiki/Two%27s_complement">Two's Complement</a></td>
+        <td>4 ::: 32</td>
+        <td>-2,147,483,648 to 2,147,483,647</td>
+        <td><pre><code>int</code></pre></td>
+      </tr>
+      <tr>
+        <td><a href="https://en.wikipedia.org/wiki/Integer_(computer_science)#Short_integer">Short</a></td>
+        <td>Whole Numbers</td>
+        <td>2 ::: 16</td>
+        <td>-32,768 to 32,767</td>
+        <td><pre><code>short int</code></pre></td>
+      </tr>
+      <tr>
+        <td><a href="https://en.wikipedia.org/wiki/Integer_(computer_science)#Long_integer">Long</a></td>
+        <td>Whole Numbers</td>
+        <td>8 ::: 64</td>
+        <td>-(2<sup>63</sup>-1) to 2<sup>63</sup>-1</td>
+        <td><pre><code>long int</code></pre></td>
+      </tr>
+      <tr>
+        <td><a href="https://en.wikipedia.org/wiki/Signedness">Unsigned Integer</a></td>
+        <td>Positive Integers:<br/><a href="https://en.wikipedia.org/wiki/Binary_number#Counting_in_binary">Base Two</a></td>
+        <td>4 ::: 32</td>
+        <td>0 to 4,294,967,295</td>
+        <td><pre><code>unsigned int</code></pre></td>
+      </tr>
+      <tr>
+        <td><a href="https://en.wikipedia.org/wiki/Floating_point">Float</a></td>
+        <td>Real Numbers</td>
+        <td>4 ::: 32</td>
+        <td>+/-3.4e(+/- 38) (~7 digits)</td>
+        <td><pre><code>float</code></pre></td>
+      </tr>
+      <tr>
+        <td><a href="https://en.wikipedia.org/wiki/Double-precision_floating-point_format">Double</a></td>
+        <td>Double Precision Real Numbers</td>
+        <td>8 ::: 64</td>
+        <td>+/-1.7e(+/- 308) (~15 digits)</td>
+        <td><pre><code>double</code></pre></td>
+      </tr>
+      <tr>
+        <td><a href="https://en.wikipedia.org/wiki/Boolean_data_type">Boolean</a></td>
+        <td>True or False</td>
+        <td>1 ::: 8</td>
+        <td>True<br/>False</td>
+        <td><pre><code>bool</code></pre></td>
+      </tr>
+      <tr>
+        <td><a href="https://en.wikipedia.org/wiki/ASCII">Character</a></td>
+        <td><a href="https://en.wikipedia.org/wiki/ASCII#Code_chart">ASCII Characters</a></td>
+        <td>1 ::: 8</td>
+        <td></td>
+        <td><pre><code>char</code></pre></td>
+      </tr>
+      <tr>
+        <td><a href="https://en.wikipedia.org/wiki/Character_encoding">Wide Characters</a></td>
+        <td>Wide Character</td>
+        <td>2-4 ::: 16-32</td>
+        <td></td>
+        <td><pre><code>wchar_t</code></pre></td>
+      </tr>
+    </table>
+    <br/>
+
+
+    <h3>Addresses</h3>
+
+    <p>So now that we know what types of data are available, let's take a look at how these primitive types might be stored in memory. First off, let's take a look at how these data types are used in a programming language (C++).
+    <pre><code>    int health =  100;
+    bool is_dead = false;
+    float x_position = 13.37;</code></pre>
+
+    Here we've declared and initialized three variables all of different types, which we give human readable names of <code>health</code>, <code>is_dead</code>, and <code>x_position</code>. While this is fantastic for us as we can refer to these names anytime we want and work with them that way, this doesn't work so well for the program/application using these variables. Instead the application must refer to each of our variables with a more computer friendly "name", called an <a href="https://en.wikipedia.org/wiki/Memory_address">address</a>. These addresses are useful to the program because they are assigned so that they always correspond to a location in memory (RAM). For instance, the address for <code>health</code> may be <code>0x1A0C84</code> (the prefix <code>0x</code> represents that we are using <a href="https://en.wikipedia.org/wiki/Hexadecimal">hexadecimal</a>), and when the program goes to that location in memory it will find the value of <code>health</code>. In a sense, a name of a variable is just an alias for its address. The following table shows how this looks:</p>
+    <p><table>
+      <tr>
+        <th>Value</th>
+        <td>100</td>
+        <td>false</td>
+        <td>13.37</td>
+      </tr>
+      <tr>
+        <th>Address</th>
+        <td>0x1A0C84</td>
+        <td>0x1A0C88</td>
+        <td>0x1A0C89</td>
+      </tr>
+      <tr>
+        <th>Name</th>
+        <td>health</td>
+        <td>is_dead</td>
+        <td>x_position</td>
+      </tr>
+    </table>
+    Quick Note: Notice how the addresses are spaced apart according to how many bytes each data type takes up (Integer takes 4, Boolean 1).</p>
+
+
+    <h3>Virtual Memory and Relative Addresses</h3>
+
+
+    <h3>Pointers and Arrays</h3>
+
+
+    <h3>Structs and Classes</h3>
+
+
+  </body>
+</html>
