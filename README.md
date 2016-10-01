@@ -1,1 +1,1 @@
-0Seren.github.io/Reverse-Engineering-For-Gaming/Part 1-Introduction to Memory.html
+0Seren.github.io/Reverse-Engineering-For-Gaming/Part%201-Introduction%20to%20Memory.html
